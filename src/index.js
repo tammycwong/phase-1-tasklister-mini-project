@@ -1,15 +1,26 @@
-document.addEventListener("DOMContentLoaded"() => {
-  const todoListForm = document.getElementById('create-task-form');
+document.addEventListener("DOMContentLoaded", () => {
+
+  const newTaskForm = document.getElementById("create-task-form");
   const newTaskDescription = document.getElementById("new-task-description");
-  const listItem = document.getElementById("tasks");
+  const newTaskPriority = document.getElementById("new-task-priority");
 
-  todoListForm.addEventListener("submit", createNewTask);
+  const newTaskUl = document.getElementById("tasks");
 
-  function createNewTask(e){
-    e.preventDefault();
-    const newTask = document.createElement("li";)
-    listItem.innerText = newTaskDescription.value;
+  newTaskForm.addEventListener("submit", createNewTask);
+});
 
-    append(listItem);
-  }
-  });
+const createNewTask = event => {
+  event.preventDefault();
+
+  const newTaskDescription = document.getElementById("new-task-description");
+  const newTask = document.createElement("li");
+  newTask.innerText = newTaskDescription.value;
+
+  appendNewTask(newTask);
+  event.target.reset();
+};
+
+const appendNewTask = task => {
+  document.getElementById("tasks").appendChild(task);
+};
+
